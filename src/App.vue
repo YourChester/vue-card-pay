@@ -46,22 +46,26 @@ h1, h2, h3, h4, h5  {
 
 body {
   height: 100vh;
-  width: 100vw;
   background-color: #101114;
 }
 
 #app {
   display: flex;
-  width: 960px;
-  margin: 0 0 0 20%;
+  width: 1000px;
+  margin: auto;
   @media screen and (max-width: 1500px) {
-    margin: 0 0 0 10%;
+    margin: auto;
   }
   @media screen and (max-width: 1200px) {
     margin: 0 0 0 0;
   }
   @media screen and (max-width: 768px) {
+    width: inherit;
     display: block;
+  }
+  @media screen and (max-width: 480px) {
+    display: block;
+    width: 480px;
   }
 }
 </style>

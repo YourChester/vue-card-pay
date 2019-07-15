@@ -1,4 +1,6 @@
-import { mapActions } from 'vuex'
+import {
+  mapActions
+} from 'vuex'
 
 export default {
   name: 'FormForPaying',
@@ -8,7 +10,7 @@ export default {
       this.years.push(year + i);
     }
   },
-  data:() => ({
+  data: () => ({
     years: [],
     months: 12,
     next: true,
@@ -53,8 +55,14 @@ export default {
     },
   }),
   watch: {
-    'name.value'(newVal) {
-      this.name.value = this.checkValue(newVal, this.name.reg, this.name.value.length-1);
+    'name.value'(newVal, oldVal) {
+      if (newVal.match(/[а-яА-Я]/g)) {
+        this.name.value = oldVal
+      } else if (newVal.match(/[0-9]/g)) {
+        this.name.value = oldVal
+      } else {
+        this.name.value = newVal
+      }
     },
     'cvc.value'(newVal) {
       this.cvc.value = this.checkValue(newVal, this.cvc.reg, 3);
@@ -86,10 +94,10 @@ export default {
     },
     cardNumberCheck() {
       if (this.cardNumber.firsval && this.cardNumber.secondval && this.cardNumber.therdval && this.cardNumber.forthval) {
-        if (this.cardNumber.firsval.length === 4 
-          && this.cardNumber.secondval.length === 4 
-          && this.cardNumber.therdval.length === 4 
-          && this.cardNumber.forthval.length === 4
+        if (this.cardNumber.firsval.length === 4 &&
+          this.cardNumber.secondval.length === 4 &&
+          this.cardNumber.therdval.length === 4 &&
+          this.cardNumber.forthval.length === 4
         ) {
           return true
         } else {
@@ -101,11 +109,11 @@ export default {
     },
     lengthInputCard() {
       if (this.cardNumberCheck && this.name.value && this.cvc.value && this.year.value && this.month.value) {
-        if (this.cardNumberCheck 
-          && this.name.value.length >= 4 
-          && this.cvc.value.length === 3 
-          && String(this.year.value).length === 4
-          && String(this.month.value).length > 0  
+        if (this.cardNumberCheck &&
+          this.name.value.length >= 4 &&
+          this.cvc.value.length === 3 &&
+          String(this.year.value).length === 4 &&
+          String(this.month.value).length > 0
         ) {
           return false;
         } else {
@@ -177,7 +185,9 @@ export default {
         summa: this.summa.value,
         date: `${date.getDate()}.${(date.getMonth()+1) < 10 ? '0' + (date.getMonth()+1) : date.getMonth()+1}.${date.getFullYear()}`,
       })
-      this.$router.push({name: 'successPay'})
+      this.$router.push({
+        name: 'successPay'
+      })
     }
   }
 }

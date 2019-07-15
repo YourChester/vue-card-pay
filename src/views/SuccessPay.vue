@@ -1,5 +1,4 @@
 <template>
-  <div class="card">
     <div class="card__success">
       <div class="card__success__text">
         <h3>Операция завершена успешно!</h3>
@@ -30,7 +29,6 @@
         <p class="text--dark">{{payData.date}}</p>
       </div> 
     </div>
-  </div>
 </template>
 
 <script>
@@ -71,14 +69,21 @@ export default {
 
 <style lang="scss">
   .card__success {
-    color: white;
+    padding: 20px 0 20px 30px;
+    background-color: white;
     text-align: left;
+    @media screen and (max-width: 480px) {
+      width: 480px - 30px;
+    }
   }
 
   .card__success__group {
-    padding: 0 50px 20px 90px;
     display: grid;
     grid-template-columns: 250px 200px;
+    @media screen and (max-width: 480px) {
+      padding: 0 0 20px 0;
+      grid-template-columns: 200px 200px;
+    }
   }
 
   .card__success__text{

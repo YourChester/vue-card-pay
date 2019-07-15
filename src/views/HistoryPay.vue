@@ -1,7 +1,7 @@
 <template>
-  <div class="card">
+  <div class="card__history">
     <template v-if="history.length > 0">
-      <div  class="card__history" v-for="(item, index) in history.reverse()" :key="index">
+      <div   v-for="(item, index) in history.reverse()" :key="index">
 
         <div class="card__history__group">
           <p class="text--dark">Счет: {{item.chet}}</p>
@@ -41,9 +41,18 @@ export default {
 
 <style lang="scss">
   .card__history {
+    background-color: white;
     padding: 0 95px 0 95px;
     hr {
       background-color: gray;
+    }
+    @media screen and (max-width: 480px) {
+      padding: 0;
+      width: inherit;
+      hr {
+        margin: auto;
+        width: 450px;
+      }
     }
   }
 
@@ -51,15 +60,22 @@ export default {
     display: grid;
     padding: 15px 0 15px 0;
     grid-template-columns: 300px 100px;
+    
     p {
       padding: 0 0 10px 0;
+    }
+    @media screen and (max-width: 768px) {
+      grid-template-columns: 400px 100px;
+      padding: 15px 15px 15px 15px;
+    }
+    @media screen and (max-width: 480px) {
+      grid-template-columns: 300px 100px;
+      padding: 15px 15px 15px 15px;
     }
   }
 
   .card__history__empty {
-    display: grid;
     text-align: center;
     padding: 15px 0 15px 0;
-    grid-template-columns: 400px;
   }
 </style>
