@@ -1,15 +1,18 @@
 .list-menu {
   @media screen and (max-width: 768px) {
     display: none;
+    &__open {
+      display: block;
+      position: absolute;
+    }
   }
-  &__open {
-    display: block;
-    position: absolute;
+  @media screen and (max-width: 480px) {
+    z-index: 3;
   }
 }
 
 .list-menu__item {
-  width: 320px;
+  width: 195px;
   padding: 30px 115px 30px 30px;
   color: white;
   font-weight: bold;
@@ -33,6 +36,7 @@
   @media screen and (max-width: 768px) {
     display: block;
     height: 50px;
+    width: inherit;
     position: relative;
     .link-menu {
       height: 50px;
@@ -67,5 +71,8 @@
         background-color: white;
       }
     }
+  }
+  @media screen and (max-width: 480px) {
+    width: inherit;
   }
 }
