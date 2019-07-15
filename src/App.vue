@@ -55,7 +55,7 @@ body {
   width: 960px;
   margin: 0 0 0 20%;
   @media screen and (max-width: 1500px) {
-    margin: 0 0 0 10%;
+    margin: 0 0 0 5%;
   }
   @media screen and (max-width: 1200px) {
     margin: 0 0 0 0;
